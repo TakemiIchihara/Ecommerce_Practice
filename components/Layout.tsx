@@ -1,6 +1,11 @@
+
 const Layout = () => {
   return (
-    <div>Layout</div>
+    <div className="layout">
+      {/* <Head>
+        <title>E-commerce Practice</title>
+      </Head> */}
+    </div>
   )
 }
 
