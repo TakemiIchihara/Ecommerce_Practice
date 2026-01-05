@@ -44,6 +44,7 @@ const FooterBanner = ({ footerBanner }: FooterBannerProps) => {
           src={urlFor(image).url()}
           // src={image?.[0] ? urlFor(image[0]).url() : ''}
           className="footer-banner-image"
+          width='500'
           alt=""
         />
       </div>
