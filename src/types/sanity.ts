@@ -5,8 +5,9 @@ export interface Slug {
 export interface Product {
   _id: string,
   name: string,
-  image: any,
+  image: any[],
   slug: Slug,
+  detail: string,
   price: number,
 }
 

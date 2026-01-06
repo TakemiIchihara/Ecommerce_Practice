@@ -34,7 +34,6 @@ const Home = () => {
       <div className="products-container">
         {products?.map((item) => <ProductContainer key={item._id} product={item} />)}
       </div>
-      {console.log(banner)}
 
       <FooterBanner footerBanner={banner?.[0]} />
     </>
