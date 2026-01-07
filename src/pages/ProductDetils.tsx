@@ -12,7 +12,7 @@ function ProductDeatils() {
   const [product, setProduct] = useState<Product | null>(null)
   const [products, setProducts] = useState<Product[]>([])
   const [index, setIndex] = useState<number>(0)
-  const { decQty, incQty, qty }= useStateContext()
+  const { decQty, incQty, qty, onAdd } = useStateContext()
 
   console.log({ slug })
 
@@ -106,7 +106,7 @@ function ProductDeatils() {
             <button
               type="button"
               className="add-to-cart"
-              onClick={() => {}}
+              onClick={() => onAdd(product, qty)}
             >Add To Cart</button>
             <button
               type="button"
