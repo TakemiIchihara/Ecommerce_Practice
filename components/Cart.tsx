@@ -5,9 +5,31 @@ import { Link } from "react-router-dom"
 import { urlFor } from "../lib/client"
 import { TiDeleteOutline } from "react-icons/ti"
 
+import getStripe from '../lib/getStripe'
+import toast from "react-hot-toast"
+
 const Cart = () => {
-  const cartRef = useRef()
+  const cartRef = useRef<HTMLDivElement>(null)
   const { totalPrice, totalQty, cartItems, setShowCart, onRemove, toggleCartItemQuantity } = useStateContext()
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe()
+
+    const response = await fetch('http://localhost:3000/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ cartItems }),
+    })
+ 
+    if(response.status === 500) return;
+
+    const data = await response.json();
+
+    toast.loading('Redirecting...')
+    window.location.href = data.url
+  }
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -72,7 +94,7 @@ const Cart = () => {
               <button
                 type='button'
                 className="btn"
-                onClick={() => {}}
+                onClick={handleCheckout}
               >
                 Pay With Stripe
               </button> 
